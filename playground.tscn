@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drxg3sw3fje38"]
 
-[ext_resource type="Texture2D" uid="uid://dap4hk6t2pju4" path="res://Player/Sprites/Main_Character_wahands.png" id="2_o00ia"]
+[ext_resource type="Texture2D" uid="uid://cndwvm2wym6wk" path="res://Player/Sprites/player_sheet.png" id="2_o00ia"]
 [ext_resource type="Script" uid="uid://lfbpr5uefkhf" path="res://Player/player.gd" id="2_player"]
 [ext_resource type="Texture2D" uid="uid://7bxka6d83d6x" path="res://Player/Sprites/Hands_with_gun.png" id="3_gun"]
 [ext_resource type="Texture2D" uid="uid://b74kw2tpcx6h4" path="res://Player/Sprites/Hands_without_gun.png" id="3_idle"]
@@ -34,24 +34,23 @@ hframes = 7
 vframes = 4
 
 [node name="IdleHand" type="Node2D" parent="CharacterBody2D" unique_id=925618785]
+visible = false
 show_behind_parent = true
-position = Vector2(40, 60)
+position = Vector2(75, 0)
 scale = Vector2(0.341, 0.341)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/IdleHand" unique_id=2107347088]
 texture_filter = 1
-position = Vector2(-888.56305, -249.26686)
-scale = Vector2(0.9999999, 0.9999999)
+position = Vector2(-225.80646, -26.392963)
 texture = ExtResource("3_idle")
 vframes = 4
 
 [node name="GunHand" type="Node2D" parent="CharacterBody2D" unique_id=72884479]
-position = Vector2(-55, 15)
+position = Vector2(-80, 15)
 scale = Vector2(0.42, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/GunHand" unique_id=1265741106]
 texture_filter = 1
-position = Vector2(123.80949, 95.23807)
 texture = ExtResource("3_gun")
 vframes = 4
 

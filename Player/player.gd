@@ -14,7 +14,8 @@ extends CharacterBody2D
 # The gun hand turns around the shoulder (the GunHand node's position).
 @onready var gun_hand: Node2D = $GunHand
 @onready var gun_sprite: Sprite2D = $GunHand/Sprite2D
-# The empty hand. Swaps picture with the facing but never turns.
+# The empty hand. Sits on the shoulder away from the mouse, behind the body
+# (show_behind_parent). Swaps picture with the facing but never turns.
 @onready var idle_hand: Node2D = $IdleHand
 @onready var idle_sprite: Sprite2D = $IdleHand/Sprite2D
 
@@ -42,14 +43,14 @@ const GUN_FRAME_RIGHT_FACE := 3
 # Shifts each picture so its shoulder (where the sleeve meets the body)
 # sits on GunHand's origin. The hand turns around that point.
 const GUN_SHOULDER_OFFSET: Array[Vector2] = [
-	Vector2(-163, -17), Vector2(-103, -102), Vector2(103, -102), Vector2(163, -17)]
+	Vector2(-163, 17), Vector2(-163, 17), Vector2(163, -17), Vector2(163, -17)]
 # Which way the gun already points in each picture, in degrees.
 const GUN_DRAWN_ANGLE: Array[float] = [180.0, -139.0, -41.0, 0.0]
 
 ## Where the shoulder sits on the body for each gun picture
 ## (left-face, left-back, right-back, right-face). Tweak to line the arm up.
 @export var gun_shoulder_positions: Array[Vector2] = [
-	Vector2(-55, 15), Vector2(-55, -25), Vector2(45, -25), Vector2(45, 15)]
+	Vector2(80, 20), Vector2(-65, 20), Vector2(60, 20), Vector2(-65, 20)]
 # Hands_without_gun.png uses the same 4-picture order as the gun hand.
 # Shifts each picture so its shoulder sits on IdleHand's origin.
 const IDLE_SHOULDER_OFFSET: Array[Vector2] = [
@@ -58,7 +59,7 @@ const IDLE_SHOULDER_OFFSET: Array[Vector2] = [
 ## Where the empty hand's shoulder sits for each picture
 ## (left-face, left-back, right-back, right-face).
 @export var idle_shoulder_positions: Array[Vector2] = [
-	Vector2(40, 60), Vector2(40, 10), Vector2(-50, 10), Vector2(-50, 60)]
+	Vector2(40, 10), Vector2(70, 15), Vector2(-75, 15), Vector2(-45, 10)]
 ## Turn the gun to point exactly at the mouse. Off = only swap pictures.
 @export var gun_follows_mouse: bool = true
 
