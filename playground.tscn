@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://drxg3sw3fje38"]
+
+[ext_resource type="Texture2D" uid="uid://dap4hk6t2pju4" path="res://Player/Sprites/Main_Character_wahands.png" id="2_o00ia"]
+[ext_resource type="Script" uid="uid://lfbpr5uefkhf" path="res://Player/player.gd" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://7bxka6d83d6x" path="res://Player/Sprites/Hands_with_gun.png" id="3_gun"]
+[ext_resource type="Texture2D" uid="uid://b74kw2tpcx6h4" path="res://Player/Sprites/Hands_without_gun.png" id="3_idle"]
+[ext_resource type="Texture2D" uid="uid://bnnhoj1f3oodl" path="res://Player/Sprites/hands.png" id="3_m8u5f"]
+[ext_resource type="Script" uid="uid://bkq6s0nvjwmta" path="res://Player/sword_arm.gd" id="4_sword"]
+[ext_resource type="PackedScene" path="res://Enemies/dummy.tscn" id="5_dummy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_edjgo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sword"]
+size = Vector2(44, 160)
+
+[node name="Playground" type="Node2D" unique_id=1767411997]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1218373645]
+position = Vector2(908, 475)
+script = ExtResource("2_player")
+speed = 700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1912148153]
+position = Vector2(-25.999998, 40.999992)
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_edjgo")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=117362321]
+texture_filter = 1
+position = Vector2(-4.9999995, -2.9999998)
+scale = Vector2(1.85, 1.85)
+texture = ExtResource("2_o00ia")
+hframes = 7
+vframes = 4
+
+[node name="IdleHand" type="Node2D" parent="CharacterBody2D" unique_id=925618785]
+show_behind_parent = true
+position = Vector2(40, 60)
+scale = Vector2(0.341, 0.341)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/IdleHand" unique_id=2107347088]
+texture_filter = 1
+position = Vector2(-888.56305, -249.26686)
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_idle")
+vframes = 4
+
+[node name="GunHand" type="Node2D" parent="CharacterBody2D" unique_id=72884479]
+position = Vector2(-55, 15)
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/GunHand" unique_id=1265741106]
+texture_filter = 1
+position = Vector2(123.80949, 95.23807)
+texture = ExtResource("3_gun")
+vframes = 4
+
+[node name="Hands" type="Node2D" parent="CharacterBody2D" unique_id=911338567]
+visible = false
+position = Vector2(6, 68)
+
+[node name="ShoulderLeft" type="Node2D" parent="CharacterBody2D/Hands" unique_id=2014755331]
+position = Vector2(-43, 19)
+
+[node name="HandLeft" type="Sprite2D" parent="CharacterBody2D/Hands/ShoulderLeft" unique_id=2034538972]
+position = Vector2(0, 30)
+scale = Vector2(0.022857143, 0.21660656)
+texture = ExtResource("3_m8u5f")
+
+[node name="ShoulderRight" type="Node2D" parent="CharacterBody2D/Hands" unique_id=1322965621]
+position = Vector2(34.5, 16)
+
+[node name="SwordArm" type="Node2D" parent="CharacterBody2D/Hands/ShoulderRight" unique_id=1092456399]
+scale = Vector2(1.0000001, 1.0000001)
+script = ExtResource("4_sword")
+
+[node name="Blade" type="Polygon2D" parent="CharacterBody2D/Hands/ShoulderRight/SwordArm" unique_id=1934817825]
+color = Color(0.82, 0.86, 0.9, 1)
+polygon = PackedVector2Array(-8, 68, 8, 68, 8, 200, 0, 222, -8, 200)
+
+[node name="Guard" type="Polygon2D" parent="CharacterBody2D/Hands/ShoulderRight/SwordArm" unique_id=1104089471]
+color = Color(0.6, 0.45, 0.2, 1)
+polygon = PackedVector2Array(-22, 60, 22, 60, 22, 68, -22, 68)
+
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D/Hands/ShoulderRight/SwordArm" unique_id=35500926]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hands/ShoulderRight/SwordArm/Hitbox" unique_id=1560184627]
+position = Vector2(0, 145)
+shape = SubResource("RectangleShape2D_sword")
+
+[node name="HandRight" type="Sprite2D" parent="CharacterBody2D/Hands/ShoulderRight" unique_id=761211324]
+visible = false
+position = Vector2(0, 32)
+scale = Vector2(0.018571455, 0.23)
+texture = ExtResource("3_m8u5f")
+
+[node name="Dummy" parent="." unique_id=992482513 instance=ExtResource("5_dummy")]
+position = Vector2(1339, 568)
+
+[node name="Dummy2" parent="." unique_id=380137715 instance=ExtResource("5_dummy")]
+position = Vector2(1317, 388)
+
+[node name="Dummy3" parent="." unique_id=617473350 instance=ExtResource("5_dummy")]
+position = Vector2(1329, 757)
+
+[node name="Dummy4" parent="." unique_id=2069376331 instance=ExtResource("5_dummy")]
+position = Vector2(1302, 197)
